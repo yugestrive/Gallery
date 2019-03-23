@@ -27,7 +27,9 @@ body{
     position: absolute;/*绝对定位*/
     z-index: 1;  /*层叠样式，相当于z轴。*/
     box-shadow: 0 0 1px rgba(0, 0, 0, 0.01);
-
+    transition: all 1s;
+    -webkit-transition: all 1s;
+    -moz-transition: all 1s;
 }
 .photo_wrap{/*3d翻转*/
     position: absolute;
@@ -111,4 +113,87 @@ body{
     margin-top: -160px; /*问题：为什么设置负值之后居中*/
     margin-left: -130px;
     z-index: 999; /*让海报处于z轴最顶层，为了让海报不被其他海报遮挡*/
+}
+/*控制按钮样式*/
+/* @font-face{
+    font-family: 'icons';
+    src: url('icons.woff') format('woff');
+    font-weight: normal;
+    font-size: normal;
+} */
+.nav{
+    width: 40%;
+    height: 20px;
+    line-height: 20px;
+    position: absolute;
+    left:30%;
+    bottom: 40px;
+    z-index: 999;
+    border-radius: 15px;
+    text-align: center;/*让span水平居中*/
+}
+/* 普通样式 */
+.nav .i{
+    width: 20px;
+    height: 20px;
+    display: inline-block;/*让span变为行级块*/
+    cursor: pointer; /*鼠标放上去的时候变为小手*/
+    background-color: #aaaaaa;
+    text-align: center;
+    border-radius: 50%;
+    transform: scale(0.6);
+    -webkit-transform: scale(0.6);
+    -moz-transform: scale(0.6);
+    transition: all 1s;
+    -webkit-transition: all 1s;
+    -moz-transition: all 1s;
+}
+.nav .i:after{
+    /* content: "\e600";
+    font-family: 'icons';
+    font-size: 80%;
+    display: inline-block;
+    line-height: 30px;
+    text-align: center;*/
+    color: #ffffff; 
+    opacity: 0;
+}
+/*选中样式*/
+ .nav .i_current{
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+
+}
+.nav .i_current:after{
+    opacity: 1;
+}
+.nav .i_back{
+    transform: rotateY(-180deg);
+	-webkit-transform:rotateY(-180deg);
+    -moz-transform:rotateY(-180deg);
+    background-color: rgb(44, 61, 45);
+	
+} 
+/* 界面优化 */
+.photo{
+    left: 50%;
+    top: 50%;
+    margin: -160px 0 0 -130px;
+
+}
+.photo_wrap{
+    transform-origin: 0% 50%;
+    -webkit-transform-origin: 0% 50%;
+    -moz-transform-origin: 0% 50%;
+}
+.photo_front .photo_wrap{
+    transform: translate(0px,0px) rotateY(0deg);
+    -webkit-transform: translate(0px,0px) rotateY(0deg);
+    -moz-transform: translate(0px,0px) rotateY(0deg);
+}
+.photo_back .photo_wrap{
+    transform: translate(260px,0px) rotateY(180deg);
+    -webkit-transform: translate(260px,0px) rotateY(180deg);
+    -moz-transform: translate(260px,0px) rotateY(180deg);
 }
