@@ -1,0 +1,114 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    background-color: #ffffff;
+    color: #555;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;/*字体平滑*/
+}
+.wrap{
+    width: 100%;
+    height: 600px;
+    position: absolute; /*垂直居中*/
+    top: 50%;           /*垂直居中*/
+    margin-top: -300px;/*设置为高度的一半，垂直居中*/
+    background-color: #333333;
+    overflow: hidden;/*超出文本不显示*/
+    perspective: 800px;/*让子元素具有3D的效果*/
+    -webkit-perspective: 800px;/*safari、chrom*/
+    -moz-perspective: 800px;/*firefox*/
+}
+.photo{/*2d负责位移，旋转*/
+    width: 260px;
+    height: 320px;
+    position: absolute;/*绝对定位*/
+    z-index: 1;  /*层叠样式，相当于z轴。*/
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.01);
+
+}
+.photo_wrap{/*3d翻转*/
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transition: all 1s;
+    -webkit-transition: all 1s;
+    -moz-transition: all 1s;
+}
+.photo_wrap .side_front{
+    transform: rotateY(0deg);
+    -webkit-transform: rotateY(0deg);/*safari、chrom*/
+    -moz-transform: rotateY(0deg);/*firefox*/
+}
+.photo_wrap .side_back{
+    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);/*safari、chrom*/
+    -moz-transform: rotateY(180deg);/*firefox*/
+}
+.photo_wrap .side{
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+}
+.photo_front .photo_wrap{
+    transform: rotateY(0deg);
+    -webkit-transform: rotateY(0deg);/*safari、chrom*/
+    -moz-transform: rotateY(0deg);/*firefox*/
+}
+.photo_back .photo_wrap{
+    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);/*safari、chrom*/
+    -moz-transform: rotateY(180deg);/*firefox*/
+}
+
+.photo .side{  /*side里的样式*/
+    width: 100%;
+    height: 100%;  
+    background-color: #eeeeee;
+    position: absolute;/*漂浮起来*/
+    top: 0;
+    right: 0;
+    box-sizing: border-box;/*设置盒模型的content和padding都不会超过父元素的边框*/
+    padding: 20px;
+}
+.photo .side_front{         /*海报前面*/
+     /*隐藏*/
+}
+.photo .side_front .image{/*设置p-image的样式*/
+    width: 100%;
+    height: 250px;
+    line-height: 250px;
+    overflow: hidden; /*溢出部分不显示*/
+}
+.photo .side_front .image img{
+    width: 100%;
+    height: 100%;
+}
+.photo .side_front .caption{/*设置p内标签字体样式*/
+    text-align: center;  /*文字水平居中*/
+    font-size: 16px;
+    line-height: 50px;
+}
+.photo .side_back{ /*海报背面*/
+    
+}
+.photo .side_back .dese{/*设置p内文字的样式*/
+    color: #666666;
+    font-size: 14px;
+    font-family: fantasy;
+    line-height: 1.5em; /*行距*/
+}
+.photo_center{/*让photo-div水平垂直居中*/
+    width: 260px;
+    height: 320px;
+    left: 50%;
+    top: 50%;
+    margin-top: -160px; /*问题：为什么设置负值之后居中*/
+    margin-left: -130px;
+    z-index: 999; /*让海报处于z轴最顶层，为了让海报不被其他海报遮挡*/
+}

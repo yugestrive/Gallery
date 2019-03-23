@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>海报画廊</title>
+    <link rel="stylesheet" type="text/css" href="../Gallery/asset/index.css" />
+</head>
+<body>
+    <div class = "wrap" id="wrap">
+
+        <div id="photo_{{index}}" onclick="turn(this)" class = "photo photo_front">
+            <div class="photo_wrap">
+
+                <div class = "side side_front">
+                    <p class="image">
+                        <img src="asset/images/{{img}}"/>
+                    </p>
+                    <p class="caption">{{caption}}</p>
+                </div>
+                <div class = "side side_back">
+                    <p class="desc">{{desc}}</p>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</body>
+<script src="JS/data.js"></script>
+<script src="JS/index.js"></script>
+</html>
